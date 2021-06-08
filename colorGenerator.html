@@ -29,12 +29,12 @@
 	}
 	
 	function myFunction() {
-		console.log("It works!");
 		
 		var col1 = rNum(0, 255);
 		var col2 = rNum(0, 255);
 		var col3 = rNum(0, 255);
 
+		console.log(`rgb(${col1}, ${col2}, ${col3})`);
 		
 		document.getElementById("white").innerHTML = `rgb(${col1}, ${col2}, ${col3})`;
 		document.getElementById("black").innerHTML = `rgb(${col1}, ${col2}, ${col3})`;
