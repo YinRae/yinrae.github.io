@@ -9,37 +9,53 @@
 		#white {color: White;}
 		#black {color: Black;}
 		.center {margin-left: auto; margin-right: auto; margin-top: 5%; width: 500px; text-align: center; border: 5px solid black; padding: 15px;}
+		.button {background-color: white; color: #444; padding: 5px; font-family: Verdana; font-weight: bold;}
+		#hisSpan {border: 2px solid white; padding: 5px; margin: 5px; line-height: 2.6;}
 	</style>
 	
 </head>
 <body>
 	<div class="center">
-	<h1 id="white">White</h1>
-	<h1 id="black">Black</h1>
-	
-	<button onclick="myFunction()">This button changes the color of this page.</button>
+		<h1 id="white">White</h1>
+		<h1 id="black">Black</h1>
+		
+		<button class="button" onclick="myFunction()">This button changes the color of this page.</button>
 	
 	</div>
 	
-	<script>
+	<div id="history">
+		<br><br>
+	</div>
 	
+	<script>
 	
 	function rNum(min, max) {
 		return Math.floor((Math.random() * max) + min);
 	}
 	
+	spanCount = 0;
+	
 	function myFunction() {
-
+		
+		// Random numbers for RGB
 		var col1 = rNum(0, 255);
 		var col2 = rNum(0, 255);
 		var col3 = rNum(0, 255);
-
+		
+		// See all colors in the console
 		console.log(`rgb(${col1}, ${col2}, ${col3})`);
 		
+		// RGB name of the color
 		document.getElementById("white").innerHTML = `rgb(${col1}, ${col2}, ${col3})`;
 		document.getElementById("black").innerHTML = `rgb(${col1}, ${col2}, ${col3})`;
-		// document.body.style.backgroundColor = "blue";
+		// Changes the background color
 		document.body.style.backgroundColor = `rgb(${col1}, ${col2}, ${col3})`;
+		
+		// Saves the colors on the page
+		document.getElementById("history").innerHTML += `<span id="hisSpan"style="background: rgb(${col1}, ${col2}, ${col3});">rgb(${col1}, ${col2}, ${col3})</span>`;
+		
+		spanCount++;
+		if (spanCount % 7 == 0) {document.getElementById("history").innerHTML += "<br>"};
 	}
 		
 	</script>

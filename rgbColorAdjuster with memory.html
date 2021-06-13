@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>RGB Color Adjuster</title>
+	<meta charset="UTF-8">
+	
+	<style>
+		div {font-family: Courier, Verdana;}
+		.center {margin-left: auto; margin-right: auto; margin-top: 5%; width: 500px; text-align: center; border: 5px solid black; padding: 15px;}
+		#white {color: White;}
+		#black {color: Black;}
+		
+		.r {background: red;}
+		.g {background: green;}
+		.b {background: blue;}
+		
+		button {font-weight: bold; color: white; height: 30px; width: 50px;}
+		
+		#hisSpan {border: 2px solid white; padding: 5px; margin: 5px; line-height: 2.6;}
+	</style>
+	
+</head>
+<body>
+	<div class="center">
+		<h1 id="white">White</h1>
+		<h1 id="black">Black</h1>
+		
+		
+		<button class="r" onclick="rMinus()">R-</button>
+		<button class="r" onclick="rPlus()">R+</button>
+		<br>
+		<button class="g" onclick="gMinus()">G-</button>
+		<button class="g" onclick="gPlus()">G+</button>
+		<br>
+		<button class="b" onclick="bMinus()">B-</button>
+		<button class="b" onclick="bPlus()">B+</button>
+	
+	</div>
+	
+	<!-- span -->
+	<div id="history">
+		<br><br>
+	</div>
+	
+	<script>
+	
+	// Numbers for RGB
+	var r1 = 125;
+	var g2 = 175;
+	var b3 = 255;
+	
+	var x = 25; // This is the variable that decides how much a color changes.
+	
+	var spanCount = 0;
+	
+	function changeCol() {
+		document.body.style.backgroundColor = `rgb(${r1}, ${g2}, ${b3})`;
+		document.getElementById("white").innerHTML = `rgb(${r1}, ${g2}, ${b3})`;
+		document.getElementById("black").innerHTML = `rgb(${r1}, ${g2}, ${b3})`;
+		
+		/* span */
+		document.getElementById("history").innerHTML += `<span id="hisSpan"style="background: rgb(${r1}, ${g2}, ${b3});">rgb(${r1}, ${g2}, ${b3})</span>`;
+		
+		spanCount++;
+		if (spanCount % 6 == 0) {document.getElementById("history").innerHTML += "<br>"};
+	}
+	
+	changeCol();
+	
+		// rMinus
+		function rMinus() {
+			r1 -= x;
+			if (r1 < 0) {r1 = 0;}
+			changeCol(); } 
+		
+		// rPlus
+		function rPlus() {
+			r1 += x;
+			if (r1 > 255) {r1 = 255;}
+			changeCol(); }
+		
+		// gMinus
+		function gMinus() {
+			g2 -= x;
+			if (g2 < 0) {g2 = 0;}
+			changeCol(); } 
+		
+		// gPlus
+		function gPlus() {
+			g2 += x;
+			if (g2 > 255) {g2 = 255;}
+			changeCol(); }
+		
+		// bMinus
+		function bMinus() {
+			b3 -= x;
+			if (b3 < 0) {b3 = 0;}
+			changeCol(); } 
+		
+		// rPlus
+		function bPlus() {
+			b3 += x;
+			if (b3 > 255) {b3 = 255;}
+			changeCol(); }
+		
+	</script>
+</body>
+</html>
+
